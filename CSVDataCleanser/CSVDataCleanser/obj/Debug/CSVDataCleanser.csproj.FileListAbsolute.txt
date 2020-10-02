@@ -1,0 +1,15 @@
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\bin\Debug\CSVDataCleanser.exe.config
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\bin\Debug\CSVDataCleanser.exe
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\bin\Debug\CSVDataCleanser.pdb
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\obj\Debug\CSVDataCleanser.csprojAssemblyReference.cache
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\obj\Debug\MainWindow.g.cs
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\obj\Debug\App.g.cs
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\obj\Debug\CSVDataCleanser_MarkupCompile.cache
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\obj\Debug\CSVDataCleanser_MarkupCompile.lref
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\obj\Debug\MainWindow.baml
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\obj\Debug\CSVDataCleanser.g.resources
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\obj\Debug\CSVDataCleanser.Properties.Resources.resources
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\obj\Debug\CSVDataCleanser.csproj.GenerateResource.cache
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\obj\Debug\CSVDataCleanser.csproj.CoreCompileInputs.cache
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\obj\Debug\CSVDataCleanser.exe
+C:\Users\Mike\OneDrive\Desktop\CSVDataCleanser\CSV-data-cleanser\CSVDataCleanser\CSVDataCleanser\obj\Debug\CSVDataCleanser.pdb

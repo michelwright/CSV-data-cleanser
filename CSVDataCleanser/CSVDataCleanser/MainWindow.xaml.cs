@@ -17,16 +17,21 @@ using System.Windows.Shapes;
 
 namespace CSVDataCleanser
 {
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            // start_cleaner("Native-Owned Online Businesses");
         }
 
-        public void pull_data() {
-            if (filePathBox.Text != "") {
+
+        public void pull_data()
+        {
+            if (filePathBox.Text != "")
+            {
                 Console.WriteLine("Box is not empty!");
                 string filename = filePathBox.Text;
                 string finalResult = "";
@@ -54,7 +59,8 @@ namespace CSVDataCleanser
         }
 
 
-        public void start_cleaner(string filename) {
+        public void start_cleaner(string filename)
+        {
             string regX = "(,\")|(\",)";
             Regex rgx = new Regex(regX);
             string results = "";
@@ -92,7 +98,7 @@ namespace CSVDataCleanser
                 throw;
             }
 
-            
+
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -108,7 +114,8 @@ namespace CSVDataCleanser
 
             Nullable<bool> result = dlg.ShowDialog();
 
-            if (result == true) {
+            if (result == true)
+            {
                 string filename = dlg.FileName;
                 filePathBox.Text = filename;
                 pull_data();
@@ -124,5 +131,7 @@ namespace CSVDataCleanser
                 pull_data();
             }
         }
+
+
     }
 }

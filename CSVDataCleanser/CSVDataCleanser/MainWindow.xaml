@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CSVDataCleanser"
         mc:Ignorable="d"
-        Title="CSV Data Cleanser" Height="500" Width="800">
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -13,8 +13,8 @@
             <RowDefinition Height="32"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
-        </Grid.RowDefinitions> 
-        
+        </Grid.RowDefinitions>
+
         <!-- Top Grid Menu -->
         <DockPanel Grid.Row="0">
             <Menu DockPanel.Dock="Top">
@@ -24,7 +24,7 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        
+
         <!-- Settings Grid -->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions >
