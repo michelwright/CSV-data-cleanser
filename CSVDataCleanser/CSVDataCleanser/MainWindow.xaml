@@ -5,60 +5,338 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CSVDataCleanser"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        MinHeight="300"
+        MinWidth="600"
+        Title="CSVDataCleanser" Height="450" Width="800">
     <Grid>
+        <!-- Main Grid -->
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="32"/>
-            <RowDefinition Height="32"/>
+            <RowDefinition Height="115"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
         <!-- Top Grid Menu -->
-        <DockPanel Grid.Row="0">
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_File" Click="MenuItem_Click">
-                    <MenuItem Header="_Settings"/>
-                    <MenuItem Header="_Close"/>
-                </MenuItem>
-            </Menu>
-        </DockPanel>
+        <Grid Grid.Row="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="61*"/>
+                <ColumnDefinition Width="731*"/>
+            </Grid.ColumnDefinitions>
+            
+            <DockPanel Grid.ColumnSpan="2">
+                <Menu DockPanel.Dock="Top">
+                    <MenuItem Header="_File" Click="MenuItem_Click">
+                        <MenuItem Header="_Import" Click="import_MenuItem_Click"/>
+                        <MenuItem Header="_Close"/>
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
+            
+        </Grid>
 
-        <!-- Settings Grid -->
         <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions >
-                <ColumnDefinition Width="70"/>
+             <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="400"/>
                 <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0" Content="File Path:" Margin="5,3,0,0"  />
-            <TextBox Grid.Column="1" x:Name="filePathBox"  Margin="0,6,0,5" KeyDown="FilePathBox_KeyDown"/>
-            <Button Grid.Column="2" Margin="5,5,0,5" Content="..." Click="openFile_Click"/>
+            <Grid Grid.Column="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions> 
+
+                <Grid Grid.Column="0">
+                    <CheckBox x:Name="checkBox_Filter1" IsChecked="True" Click="CheckBox_text_Click1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,15,13"/>
+                </Grid>
+                <GroupBox Header="Filter 1" Grid.Column="0" x:Name="GroupBox1">
+                    <GroupBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Control.IsEnabled" Value="False">
+                                    <Setter Property="Control.Foreground" Value ="#FF6D6D6D" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </GroupBox.Style>
+                    <StackPanel>
+                        <Grid Height="30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Width="60" Content="regex:" Margin="0,2,0,0"  />
+                                <TextBox Grid.Column="1" x:Name="findBox1" Margin="0,6,10,5" KeyDown="FilePathBox_KeyDown"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Height="30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Width="60" Content="replace:" Margin="0,2,0,0"  />
+                                <TextBox Grid.Column="1" x:Name="findBox2" Margin="0,6,10,5" KeyDown="FilePathBox_KeyDown"/>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Grid.Column="1" Header="Filter 2" x:Name="GroupBox2" IsEnabled="False">
+                    <GroupBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Control.IsEnabled" Value="False">
+                                    <Setter Property="Control.Foreground" Value ="#FF6D6D6D" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </GroupBox.Style>
+                    <StackPanel>
+                        <Grid Height="33">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Width="60" Content="regex:" Margin="0,2,0,0"  />
+                                <TextBox Grid.Column="1" x:Name="step2_filePathBox" Margin="0,6,10,12" KeyDown="FilePathBox_KeyDown"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Height="33">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Width="60" Content="replace:" Margin="0,2,0,0"  />
+                                <TextBox Grid.Column="1" x:Name="step2_filePathBox2" Margin="0,6,10,12" KeyDown="FilePathBox_KeyDown"/>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </GroupBox>
+                
+                <Grid Grid.Column="1">
+                    <CheckBox x:Name="checkBox_Filter2" IsChecked="False" Click="CheckBox_text_Click2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,15,13"/>
+                </Grid>
+            </Grid>
+
+
+            <GroupBox Grid.Column="1" Header="Settings" IsEnabled="True">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90"/>
+                        <ColumnDefinition Width="90"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="5,0,0,0">
+                        <Label Content="Delimiter:"/>
+                        <Label Content="N of Columns:"/>
+                        <Label Content="Display:"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBox Margin="2,2,0,0"/>
+                        <TextBox Margin="2,4,0,0"/>
+                        <TextBox Margin="2,4,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+
+
+
         </Grid>
 
-        <!-- Settings Grid -->
         <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions >
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="50"/>
-            </Grid.ColumnDefinitions>
-
-            <Label Grid.Column="0" Content="Reg Exp:" Margin="5,3,0,0"  />
-            <TextBox Grid.Column="1" Margin="0,6,0,5"/>
-            <Button Grid.Column="2" Margin="5,5,0,5" Content="Apply"/>
-        </Grid>
-
-        <!-- Input Area -->
-        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <RichTextBox Grid.Column="0" x:Name="ResultsTxtAreaOriginal" VerticalScrollBarVisibility="Visible" AcceptsReturn="True"/>
+            <!--
+            <RichTextBox Grid.Column="0" x:Name="ResultsTxtAreaOriginal" Margin="40,0,0,0" MinWidth="200" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" AcceptsReturn="True" Block.LineHeight="1"/>
+            -->
+            <TextBox Grid.Column="0" AcceptsReturn="True" Margin="40,0,0,0" BorderThickness="0" HorizontalScrollBarVisibility="Auto"/>
+            <ListBox Grid.Column="0" SelectionMode="Single" Width="40" x:Name="lineNumbers1_ListBox" HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Hidden" Background="#FFF7F7F7" BorderBrush="{x:Null}" Foreground="#FF7E7E7E">
+
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="True" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+            </ListBox>
             <RichTextBox Grid.Column="1" x:Name="ResultsTxtAreaChanged" VerticalScrollBarVisibility="Visible" AcceptsReturn="True"/>
+            <ListBox Grid.Column="1" SelectionMode="Single" Width="40" x:Name="lineNumbers2_ListBox" HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Hidden" Background="#FFF7F7F7" BorderBrush="{x:Null}" Foreground="#FF7E7E7E">
+                <ListBoxItem Focusable="False" HorizontalAlignment="Right" Margin="0,0,7,0">1</ListBoxItem>
+                <ListBoxItem Focusable="False" HorizontalAlignment="Right" Margin="0,0,7,0">2</ListBoxItem>
+                <ListBoxItem Focusable="False" HorizontalAlignment="Right" Margin="0,0,7,0">3</ListBoxItem>
+                <ListBoxItem Focusable="False" HorizontalAlignment="Right" Margin="0,0,7,0">4</ListBoxItem>
+            </ListBox>
         </Grid>
+        
+        
+        <!-- Pipeline Grid -->
+        <!--
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions> 
+
+                <Grid Grid.Column="0">
+                    <CheckBox x:Name="checkBox_Filter1" IsChecked="True" Click="CheckBox_text_Click1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,15,13"/>
+                </Grid>
+                <GroupBox Header="Filter 1" Grid.Column="0" x:Name="GroupBox1">
+                    <GroupBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Control.IsEnabled" Value="False">
+                                    <Setter Property="Control.Foreground" Value ="#FF6D6D6D" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </GroupBox.Style>
+                    <StackPanel>
+                        <Grid Height="30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Width="60" Content="regex:" Margin="0,2,0,0"  />
+                                <TextBox Grid.Column="1" x:Name="findBox1" Margin="0,6,10,5" KeyDown="FilePathBox_KeyDown"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Height="30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Width="60" Content="replace:" Margin="0,2,0,0"  />
+                                <TextBox Grid.Column="1" x:Name="findBox2" Margin="0,6,10,5" KeyDown="FilePathBox_KeyDown"/>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Grid.Column="1" Header="Filter 2" x:Name="GroupBox2" IsEnabled="False">
+                    <GroupBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Control.IsEnabled" Value="False">
+                                    <Setter Property="Control.Foreground" Value ="#FF6D6D6D" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </GroupBox.Style>
+                    <StackPanel>
+                        <Grid Height="33">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Width="60" Content="regex:" Margin="0,2,0,0"  />
+                                <TextBox Grid.Column="1" x:Name="step2_filePathBox" Margin="0,6,10,12" KeyDown="FilePathBox_KeyDown"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Height="33">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Width="60" Content="replace:" Margin="0,2,0,0"  />
+                                <TextBox Grid.Column="1" x:Name="step2_filePathBox2" Margin="0,6,10,12" KeyDown="FilePathBox_KeyDown"/>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </GroupBox>
+                
+                <Grid Grid.Column="1">
+                    <CheckBox x:Name="checkBox_Filter2" IsChecked="False" Click="CheckBox_text_Click2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,15,13"/>
+                </Grid>
+            </Grid>
+            
+            
+            <Grid Grid.Column="3">
+                
+                <Button Content="Clean!" Height="30" Click="Start_Button_Click"/>
+                
+            </Grid>
+            
+            
+        </Grid>
+-->
+
+        <!-- 
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Height="255" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <RichTextBox Grid.Column="0" x:Name="ResultsTxtAreaOriginal" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" BorderThickness="0"/>
+            <RichTextBox Grid.Column="1" x:Name="ResultsTxtAreaChanged" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" />
+            <ListBox Grid.Column="1" SelectionMode="Single" Width="15" x:Name="lineNumbers_ListBox" HorizontalAlignment="Left">
+                <ListBoxItem Focusable="False" HorizontalAlignment="Right">1</ListBoxItem>
+                <ListBoxItem Focusable="False" HorizontalAlignment="Right">2</ListBoxItem>
+                <ListBoxItem Focusable="False" HorizontalAlignment="Right">3</ListBoxItem>
+                <ListBoxItem Focusable="False" HorizontalAlignment="Right">4</ListBoxItem>
+            </ListBox>
+        </Grid>
+    -->
     </Grid>
 </Window>
